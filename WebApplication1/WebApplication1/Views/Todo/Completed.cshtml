@@ -1,0 +1,25 @@
+﻿@using TodoSql
+@using WebApplication1.Models.Todo
+@model CompletedViewModel
+
+@{
+    ViewData["Title"] = "Completed";
+    Layout = "~/Views/Todo/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Completed items</title>
+</head>
+<body>
+    <h2 style="margin-bottom:50px">Completed Todos</h2>
+    @foreach (var item in Model.TodoList)
+    {
+        <div style="margin-bottom:30px">
+            @Html.Partial("Partial", item)
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@using TodoSql
+@using WebApplication1.Models.Todo
+@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Todo/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Todo Items</title>
+</head>
+<body>
+    <h2>Todo</h2>
+    <div style="margin-bottom:50px">
+        <div>
+            <a class="btn btn-warning" href="/todo/additem">Add new todo</a>
+        <div/>
+        <div>
+            <a href="/todo/completed"> See completed todos</a>
+        </div>
+        @foreach (var item in Model.TodoList)
+    {
+        <div style="margin-bottom:30px">
+            @Html.Partial("Partial", item)
+        </div>
+}
+</body>
+</html>

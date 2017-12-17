@@ -1,0 +1,34 @@
+﻿@using WebApplication1.Models.Todo
+@model AddTodoViewModel
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Todo/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add new item</title>
+</head>
+<body>
+    <h1>Add</h1>
+    <form asp-action="AddItem" method="post">
+        <div class="form-group">
+            <label for="Text">Title:</label>
+            <input asp-for="TodoText" class="form-control" />
+            <span class="form-text text-muted" asp-validation-for="TodoText"></span>
+            <label for="Labels">Label:</label>
+            <input class="form-control" asp-for="Labels" />
+            <span class="form-text text-muted" asp-validation-for="Labels"></span>
+            <label for="DateDue">Date Due:</label>
+            <input class="form-control" asp-for="DateDue" type="datetime" />
+            <span class="form-text text-muted" asp-validation-for="DateDue"></span>
+            <p></p>
+            <input type="submit" class="btn btn-group-justified" style="background-color:yellow" />
+        </div>
+    </form>
+</body>
+</html>

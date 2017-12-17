@@ -1,0 +1,24 @@
+﻿@using WebApplication1.Models.Todo
+@model TodoViewModel
+
+
+<div class="card card-body mx-auto" style="width: 20rem;">
+    <h3 class="card-title">@Model.Title</h3>
+    @if (Model.DateDue.HasValue)
+    {
+        @Model.DateDue.Value.ToString("d. MMMM yyyy.")
+        @if (Model.ShowOffset)
+        {
+            @if (Model.DateDue.Value.Subtract(DateTime.Now).Days >= 0)
+            {
+                <span class="text-danger">(in @Model.DateDue.Value.Subtract(DateTime.Now).Days days)</span>
+            }
+            else
+            {
+                <span class="text-danger">(You missed the deadline)</span>
+            }
+        }
+    }
+    <!---Html.ActionLink("Mark as completed", "ToggleCompleted", new { id = Model.Id}, new { class = "btn btn-default" } )--->
+    <a class="btn btn-success" href="/todo/toggleCompleted/@Model.Id">@Model.LinkText</a>
+</div>
